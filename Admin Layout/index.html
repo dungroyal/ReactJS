@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin | BootStrap 4</title>
+  <link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugin/fontawesome/css/all.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="bg-primary">
+    <nav class="container navbar navbar-expand-lg navbar-dark bg-primary h-100 pt-2">
+      <a class="navbar-brand" href="#">
+        <img src="img/DR-SQUAE-White.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        </a>
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand text-uppercase font-weight-bold title-admin" href="#">Student Manager</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Major</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" >Students</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Wellcom! Đoàn Quốc Dũng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="tooltip" title="Đăng xuất"><i class="fas fa-sign-out-alt"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container my-3">
+    <div class="card border-top-primary border border-primary">
+      <div class="card-header font-weight-bold">
+        <span class="h4 font-weight-bold">Major</span>
+        <a class="btn btn-primary float-right py-1" href="#" data-toggle="modal" data-target="#addModal"  data-toggle="tooltip" title="Add new Major"><i class="fas fa-plus"></i> Add</a>
+      </div>
+      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-plus mr-2"></i>  Add New Major</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Major Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputPassword" required>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add new Major</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col" width="5%">#</th>
+              <th scope="col">Major Name</th>
+              <th scope="col" width="15%">Action</th>
+            </tr> 
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>It</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>English</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Network</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Accounting</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-3">
+    <div class="card border-top-success border border-success">
+      <div class="card-header font-weight-bold">
+        <span class="h4 font-weight-bold">Student</span>
+        <a class="btn btn-primary float-right py-1" href="#" data-toggle="modal" data-target="#addModalSTD"  data-toggle="tooltip" title="Add new Major"><i class="fas fa-plus"></i> Add</a>
+      </div>
+      <div class="modal fade" id="addModalSTD" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-plus mr-2"></i>  Add New Student</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-3 col-form-label">Student Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputPassword" required>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add new Student</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col" width="5%">#</th>
+              <th scope="col">Student Name</th>
+              <th scope="col" width="15%">Action</th>
+            </tr> 
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Đoàn Quốc Dũng</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Đoàn Quốc Dũng</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Đoàn Quốc Dũng</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Đoàn Quốc Dũng</td>
+              <td>
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                      <a href="#" class="btn btn-success btn-sm rounded" data-toggle="tooltip"
+                          title="Edit"><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#>" class="btn btn-danger btn-sm rounded" data-toggle="tooltip"
+                          title="Delete"><i class="fa fa-trash"></i></a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer class="bg-dark mt-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 text-light my-3">
+          <div>Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2020 - All Rights Reserved</div>
+        </div>
+        <div class="col-6 text-light text-right mt-3">
+          <a href="https://www.facebook.com/Quocdungroyal/">DungRoyal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="plugin/jquery/jquery-3.5.1.min.js"></script>
+  <script src="plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Simple React</title>
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/react-native-555397.png" type="image/png"
+        sizes="16x16">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-3" id="app"></div>
+
+
+    <!-- Adding React library -->
+    <script src="node_modules/@babel/standalone/babel.js"></script>
+    <script src="node_modules/react/umd/react.production.min.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.production.min.js"></script>
+    
+    <script type="text/babel">
+        function Person(props) {
+            return (
+                <div class="card">
+                    <img class="card-img-top" src="https://picsum.photos/200" />
+                    <div class="card-body">
+                        <h4 class="card-title">{props.name}</h4>
+                        <p class="card-text">Age: {props.age}</p>
+                    </div>
+                </div>
+            );
+        }
+
+        var app = (
+            <div class="row">
+                <div class="card-columns">
+                    <Person name="Đoàn Quốc Dũng" age="18" />
+                    <Person name="Nguyễn Thành Tài" age="22" />
+                    <Person name="Trần Công Bằng" age="28" />
+                </div>
+            </div>
+        )
+        ReactDOM.render(app, document.querySelector('#app'));
+    </script>
+</body>
+
+</html>
