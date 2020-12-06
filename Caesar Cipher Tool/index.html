@@ -17,8 +17,8 @@
     <nav class="container navbar navbar-expand-lg navbar-dark bg-primary h-100 pt-2">
       <a class="navbar-brand" href="#">
         <img src="img/DR-SQUAE-White.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-        </a>
-    
+      </a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,15 +26,6 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a class="navbar-brand text-uppercase font-weight-bold title-admin" href="#">Caesar Cipher Tool</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Encode<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="decode.html">Edcode</a>
-          </li>
-        </ul>
-
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <li class="nav-item active">
             <a class="nav-link" href="#">Wellcom! Đoàn Quốc Dũng</a>
@@ -48,51 +39,166 @@
   </header>
 
   <div class="container my-3">
-    <div class="card border-top-primary border border-primary">
-      <div class="card-header font-weight-bold">
-        <span class="h4 font-weight-bold">Caesar Cipher Encode</span>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6 mb-5">
+        <div class="card border-top-primary border border-primary">
+          <div class="card-header font-weight-bold">
+            <span class="h4 font-weight-bold">Caesar Cipher Encode</span>
+          </div>
+
+          <div class="card-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Messages</label>
+              <textarea id="messages" class="form-control" style="text-transform:uppercase" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="key">Key</label>
+              <input type="number" id="key" placeholder="Key từ 0 đến 25" min="0" max="25" class="form-control"
+                style="text-transform:uppercase" />
+            </div>
+            <div class="text-center">
+              <button onclick="encode()" class="btn btn-primary text-uppercase">Encode</button>
+            </div>
+
+            <div class="alert alert-success mt-3" role="alert">
+              <div class="row">
+                <div class="mt-2 ml-3">Code: <span id="code" class="font-weight-bold"></span></div>
+                <button class="btn btn-info ml-auto mr-2" id="copy-btn">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <div class="card-body">
-        <form id="formEndode">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Messages</label>
-            <textarea id="messages" class="form-control" style="text-transform:uppercase" rows="3"></textarea>
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="card border-top-success border border-primary">
+          <div class="card-header font-weight-bold">
+            <span class="h4 font-weight-bold">Caesar Cipher Decode</span>
           </div>
-          <div class="form-group">
-            <label for="key">Key</label>
-            <input type="text" id="key" class="form-control" style="text-transform:uppercase"/>
+
+          <div class="card-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Code</label>
+              <textarea id="code-cipher" class="form-control" style="text-transform:uppercase" rows="6"></textarea>
+            </div>
+            <div class="text-center">
+              <button onclick="decode()" class="btn btn-primary text-uppercase">Decode</button>
+            </div>
+
+            <div class="alert alert-success mt-3" role="alert">
+              <div class="row">
+                <div class="mt-2 ml-3">Messages: <span id="messages-result" class="font-weight-bold"></span></div>
+              </div>
+            </div>
           </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary text-uppercase">Caesar Cipher Encode</button>
         </div>
-        
-        <div class="alert alert-success mt-3" role="alert">
-          <div class="row">
-            <div class="mt-2 ml-3">Code: <span id="encode"  class="font-weight-bold">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, magnam.</span></div>
-          <div class="btn btn-info ml-auto mr-2">Coppy</div>
-        </div>
-        </div>
-        </form>
       </div>
     </div>
   </div>
-  <footer class="bg-dark mt-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 text-light my-3">
-          <div>Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2020 - All Rights Reserved</div>
-        </div>
-        <div class="col-6 text-light text-right mt-3">
-          <a href="https://www.facebook.com/Quocdungroyal/">DungRoyal</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
   <script src="plugin/jquery/jquery-3.5.1.min.js"></script>
   <script src="plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="js/encode.js"></script>
+  <script type="text/javascript">
+    var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+    function encode() {
+      var plainText = document.getElementById('messages').value;
+      var key = Number(document.getElementById('key').value);
+      var keyString = alphabet[key].toUpperCase();
+      var stringRandom = getRandomString(2).toUpperCase();
+
+      if (plainText.length === 0) {
+        return;
+      }
+
+      const splitInput = plainText.split('');
+      const testMap = splitInput.map(x => {
+
+        if (alphabet.indexOf(x.toLowerCase()) === -1) {
+          return ' ';
+        }
+        let y = parseInt(alphabet.indexOf(x.toLowerCase())) + parseInt(key);
+
+        if (y > 25) {
+          if (x === x.toUpperCase()) {
+            let output = alphabet[y - 26];
+            output = output.toUpperCase();
+            return output;
+          } else {
+            return alphabet[y - 26];
+          }
+        } else {
+          if (x === x.toUpperCase()) {
+            let output = alphabet[y];
+            output = output.toUpperCase();
+            return output;
+          } else {
+            return alphabet[y];
+          }
+        }
+      });
+      $result = stringRandom + "" + keyString + "" + testMap.join('');
+      document.getElementById('code').innerText = $result.toUpperCase();
+      document.getElementById('code-cipher').value = $result.toUpperCase();
+    }
+
+
+    function decode() {
+      var encryptValue = document.getElementById('code-cipher').value;
+      if (encryptValue.length === 0) {
+        return;
+      }
+      const splitInput = encryptValue.split('');
+      var getKey = alphabet.findIndex(alphabet => alphabet === splitInput[2].toLowerCase());
+      const codeCipher = splitInput.splice(3)
+      const testMap = codeCipher.map(x => {
+        if (alphabet.indexOf(x.toLowerCase()) === -1) {
+          return ' ';
+        }
+        let y = parseInt(alphabet.indexOf(x.toLowerCase())) - parseInt(getKey);
+        if (y < 0) {
+          if (x === x.toUpperCase()) {
+            let output = alphabet[26 + y];
+            output = output.toUpperCase();
+            return output;
+          } else {
+            return alphabet[26 + y];
+          }
+
+        } else {
+          if (x === x.toUpperCase()) {
+            let output = alphabet[y];
+            output = output.toUpperCase();
+            return output;
+          } else {
+            return alphabet[y];
+          }
+        }
+      });
+
+      document.getElementById('messages-result').innerHTML = testMap.join('');
+    }
+
+
+    function getRandomString(length) {
+      var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      var result = '';
+      for (var i = 0; i < length; i++) {
+        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+      }
+      return result;
+    }
+
+    document.getElementById("copy-btn").addEventListener("click", copy_code);
+    function copy_code() {
+      var copyText = document.getElementById("code");
+      var textArea = document.createElement("textarea");
+      textArea.value = copyText.textContent;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("Copy");
+      textArea.remove();
+    }
+
+  </script>
 </body>
 
 </html>
